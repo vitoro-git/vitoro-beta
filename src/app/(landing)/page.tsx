@@ -41,7 +41,7 @@ function Hero({ isLoggedIn }: { isLoggedIn: boolean }) {
         </div>
         <div className="flex gap-4 mt-2">
           <Button asChild className="z-1">
-            <Link href={isLoggedIn ? "/app" : "/register"}>
+            <Link href={isLoggedIn ? "/app" : "/signup"}>
               <span className="text-background">Start learning</span>
             </Link>
           </Button>
@@ -110,7 +110,7 @@ function CallToActionSection({ isLoggedIn }: { isLoggedIn: boolean }) {
           it&apos;s time to try something new.
         </p>
         <Button asChild>
-          <Link href={isLoggedIn ? "/" : "/register"}>
+          <Link href={isLoggedIn ? "/" : "/signup"}>
             <span className="text-background">Start your preparation</span>
           </Link>
         </Button>

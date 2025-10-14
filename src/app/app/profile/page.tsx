@@ -34,7 +34,7 @@ export default async function ProfilePage() {
   const headersList = await headers();
   const session = await auth.api.getSession({ headers: headersList });
   // Only for type checker, layout will handle redirect before this
-  if (session === null) return redirect("/auth/login");
+  if (session === null) return redirect("/signin");
   const subscriptions = await auth.api.listActiveSubscriptions({
     headers: headersList,
   });

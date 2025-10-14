@@ -64,7 +64,7 @@ export default function ResetPasswordPage() {
             description: "Redirection to login...",
           });
           setTimeout(() => {
-            router.push("/auth/login");
+            router.push("/signin");
           }, 1000);
         },
       }
@@ -83,7 +83,7 @@ export default function ResetPasswordPage() {
           </CardHeader>
           <CardContent>
             <Button className="w-full" asChild>
-              <Link href="/auth/login">Back to Login</Link>
+              <Link href="/signin">Back to Login</Link>
             </Button>
           </CardContent>
         </Card>

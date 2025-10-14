@@ -41,10 +41,10 @@ export default function Header({ isLoggedIn }: { isLoggedIn: boolean }) {
         ) : (
           <div className="flex justify-self-end gap-2 w-fit">
             <Button asChild variant="outline">
-              <Link href="/login">Log In</Link>
+              <Link href="/signin">Log In</Link>
             </Button>
             <Button asChild>
-              <Link href="/register">
+              <Link href="/signup">
                 <span className="text-background">Register</span>
               </Link>
             </Button>
