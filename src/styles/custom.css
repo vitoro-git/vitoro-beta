@@ -1,0 +1,22 @@
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  color: var(--primary);
+}
+
+.highlight {
+  background-color: #fde047;
+  border-bottom: 1px dashed #eab308;
+  cursor: pointer;
+}
+
+.dark .highlight {
+  background-color: #fde04733;
+  border-bottom: 1px dashed #fde047;
+}
