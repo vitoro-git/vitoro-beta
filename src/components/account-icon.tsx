@@ -13,7 +13,7 @@ export default function AccountIcon({ className, size }: AccountIconProps) {
   const [firstName, lastName] = user.name.split(" ");
 
   const initials =
-    firstName.length === 0 || lastName.length === 0
+    firstName.length === 0 || (lastName ?? "").length === 0
       ? "?"
       : firstName.charAt(0) + lastName.charAt(0);
   const isDark = isColorDark(user.color);
