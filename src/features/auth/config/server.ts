@@ -23,6 +23,7 @@ export const auth = betterAuth({
       enabled: true,
     },
     additionalFields: {
+      betaApproved: { type: "boolean", required: true, defaultValue: false }, // BETA ONLY
       color: { type: "string", required: true },
       gradYear: { type: "string", required: false },
       exam: { type: "string", required: false, enum: ["step-1", "step-2"] },

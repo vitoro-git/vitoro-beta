@@ -19,6 +19,7 @@ export default async function ProtectedLayout({
   const session = await auth.api.getSession({ headers: await headers() });
   if (session === null) redirect("/signin");
   if (!hasAdditionalInfo(session.user)) redirect("/additional-info");
+  if (!session.user.betaApproved) redirect("/application-pending"); // BETA ONLY
 
   return (
     <SessionProvider session={session.session} user={session.user}>
