@@ -17,7 +17,7 @@ const stripeClient = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export const auth = betterAuth({
-  appName: "Better Auth Demo",
+  appName: "Vitoro - Beta",
   user: {
     deleteUser: {
       enabled: true,
