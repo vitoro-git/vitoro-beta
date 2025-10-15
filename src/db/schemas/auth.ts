@@ -22,6 +22,7 @@ export const user = pgTable("user", {
   banReason: text("ban_reason"),
   banExpires: timestamp("ban_expires"),
   stripeCustomerId: text("stripe_customer_id").unique(),
+  betaApproved: boolean("beta_approved").default(false).notNull(),
   color: text("color").notNull(),
   gradYear: text("grad_year"),
   exam: text("exam"),
