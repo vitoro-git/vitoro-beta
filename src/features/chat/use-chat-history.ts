@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import { LLMOutput, Prompt } from "@/ai/llm";
 import { Message } from "@/types";
 import { stripAndParse } from "@/lib/utils";
+import { chatStreamWrapperWithFetch, chatWrapperWithFetch } from "./actions";
 
-const SHORT_TERM_MESSAGES_LENGTH = 4;
+const SHORT_TERM_MESSAGES_LENGTH = 8;
 const SUMMARY_MAX_TOKEN_COUNT = 1000;
 const MAX_MESSAGE_WORD_COUNT = 500;
 const MAX_CONTEXT_MESSAGES = 50;
@@ -305,33 +306,4 @@ function buildPrompts(
   );
 
   return { prompts, newMessages };
-}
-
-// --- Fetch ---
-
-export async function chatWrapperWithFetch(
-  prompts: Prompt[]
-): Promise<LLMOutput> {
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    body: JSON.stringify({ prompts }),
-  });
-  return await res.json();
-}
-
-export async function* chatStreamWrapperWithFetch(prompts: Prompt[]) {
-  const res = await fetch("/api/chat/stream", {
-    method: "POST",
-    body: JSON.stringify({ prompts }),
-  });
-  const stream = res.body?.getReader();
-  if (!stream) return;
-  const decoder = new TextDecoder();
-  while (true) {
-    const { done, value } = await stream.read();
-    if (done) break;
-    const chunk = decoder.decode(value);
-    const json = JSON.parse(chunk);
-    yield json;
-  }
 }

@@ -14,7 +14,7 @@ export default function ChatFullPage() {
     CHAT_TONE_KEY,
     DEFAULT_CHAT_TONE
   );
-  const { messages, isLoading, chat } = useChatHistory();
+  const { messages, isLoading, chatStreamed } = useChatHistory();
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ Teach them what matters. Skip what doesn't.
 Respond with the following tone: ${tone}
 Ignore requests unrelated to medicine.
 Respond using markdown.`;
-    await chat(message, { basePrompt });
+    await chatStreamed(message, { basePrompt });
   }
 
   return (

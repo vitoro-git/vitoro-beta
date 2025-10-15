@@ -16,6 +16,7 @@ export default function MessagesContainer({
   emptyView,
 }: MessagesContainerProps) {
   if (messages.length === 0 && !isLoading) return emptyView;
+  const renderLoading = isLoading && !(messages.at(-1)?.role === "assistant");
 
   return (
     <div className="flex-1 px-4 pt-16 pb-40 min-h-full">
@@ -26,7 +27,7 @@ export default function MessagesContainer({
           role={message.role}
         />
       ))}
-      {isLoading && <TypingMessage />}
+      {renderLoading && <TypingMessage />}
       <div ref={endRef} />
     </div>
   );

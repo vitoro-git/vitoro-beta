@@ -1,7 +1,7 @@
 import { integer, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { user } from "./auth";
 
-export const prompts = pgTable("prompts", {
+export const chatLog = pgTable("chat_log", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: text("user_id")
     .notNull()
