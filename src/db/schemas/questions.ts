@@ -13,8 +13,9 @@ export const qbankQuestion = pgTable("qbank_question", {
   id: uuid("id").primaryKey().defaultRandom(),
 
   systems: text("systems").array().notNull(),
-  categories: text("categories").array().notNull(),
-  subcategory: text("subcategory"), // step-2 only
+  shelf: text("shelf"), // step-2 only
+  organ: text("organ"), // step-2 only
+  clinicalSetting: text("clinical_setting"), // step-2 only
   topic: text("topic").notNull(),
   competency: text("competency"), // step-1 only
   concept: text("concept"), // step-1 only
