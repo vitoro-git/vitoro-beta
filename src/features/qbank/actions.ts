@@ -12,7 +12,6 @@ import { headers } from "next/headers";
 export async function getQuestions(
   step: Step,
   systems: string[],
-  categories: string[],
   limit: number,
   userId: string
 ) {
@@ -34,15 +33,6 @@ export async function getQuestions(
     );
   }
 
-  if (categories.length > 0) {
-    const categoriesLiteral = `{${categories.map((c) => `"${c}"`).join(",")}}`;
-    filters.push(
-      sql`${qbankQuestion.categories} && ${sql.raw(
-        `'${categoriesLiteral}'::text[]`
-      )}`
-    );
-  }
-
   const questions = await db
     .select({ id: qbankQuestion.id })
     .from(qbankQuestion)
@@ -56,7 +46,6 @@ export async function createSession(userId: string, data: CreateSessionForm) {
   const questionIds = await getQuestions(
     data.step,
     data.systems,
-    data.categories,
     data.size,
     userId
   );

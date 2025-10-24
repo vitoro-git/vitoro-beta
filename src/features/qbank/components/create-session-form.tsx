@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { capitalize } from "@/lib/utils";
-import { getCategories, MODES, Step, STEPS, SYSTEMS } from "@/types";
+import { MODES, Step, STEPS, SYSTEMS } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -38,7 +38,6 @@ const createSessionSchema = z.object({
   size: z.number().min(MIN_SIZE).max(MAX_SIZE),
   mode: z.enum(MODES),
   systems: z.array(z.string()),
-  categories: z.array(z.string()),
 });
 
 export type CreateSessionForm = z.infer<typeof createSessionSchema>;
@@ -60,7 +59,6 @@ export default function CreateSessionForm({
       size: 10,
       mode: MODES[0],
       systems: [],
-      categories: [],
     },
   });
 
@@ -91,28 +89,6 @@ export default function CreateSessionForm({
                         value: s.system,
                         label: s.system,
                       }))}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="categories"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Categories</FormLabel>
-                  <FormControl>
-                    <MultiSelect
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      options={getCategories(form.getValues().systems).map(
-                        (c) => ({
-                          value: c,
-                          label: c,
-                        })
-                      )}
                     />
                   </FormControl>
                   <FormMessage />
