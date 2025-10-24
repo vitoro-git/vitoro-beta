@@ -39,8 +39,9 @@ function getTypeString(table: Table) {
     case "qbank":
       return `type QBankQuestion = {
   systems: string[];
-  categories: string[];
-  subcategory: string | null; // step-2 only
+  shelf: string; // step-2 only
+  organ: string; // step-2 only
+  clinicalSetting: string; // step-2 only
   topic: string;
   competency: string | null; // step-1 only
   concept: string | null; // step-1 only
