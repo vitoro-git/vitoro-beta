@@ -12,7 +12,7 @@ import {
   uploadedQBank,
 } from "@/db/schema";
 
-export async function uploadQBank(data: UploadedQBank[]) {
+export async function uploadQBank(data: UploadedQBank) {
   await db.insert(uploadedQBank).values(
     data.map((q) => ({
       ...q,
@@ -23,12 +23,12 @@ export async function uploadQBank(data: UploadedQBank[]) {
   );
 }
 
-export async function uploadFoundational(data: UploadedFoundational[]) {
+export async function uploadFoundational(data: UploadedFoundational) {
   await db.insert(uploadedFoundational).values(data);
 }
 
 export async function uploadFoundationalFollowup(
-  data: UploadedFoundationalFollowup[]
+  data: UploadedFoundationalFollowup
 ) {
   await db.insert(uploadedFoundationalFollowup).values(data);
 }
