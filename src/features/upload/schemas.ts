@@ -3,8 +3,9 @@ import z from "zod";
 export const uploadedQBankSchema = z.array(
   z.object({
     systems: z.array(z.string()),
-    categories: z.array(z.string()),
-    subcategory: z.string().nullable(),
+    shelf: z.string().nullable(),
+    organ: z.string().nullable(),
+    clinicalSetting: z.string().nullable(),
     topic: z.string(),
     competency: z.string().nullable(),
     concept: z.string().nullable(),
