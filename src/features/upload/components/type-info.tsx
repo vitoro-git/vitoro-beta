@@ -56,7 +56,7 @@ function getTypeString(table: Table) {
     d: string;
     e: string;
   };
-  explanation: {
+  explanations: {
     a: string;
     b: string;
     c: string;
